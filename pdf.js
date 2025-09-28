@@ -6,7 +6,7 @@ function addScript() {
     }
 
     var script = document.createElement("script");
-    script.src = "./html3pdf.js";
+    script.src = "https://ena-coder.github.io/Resume-export/html3pdf.js";
 
     script.onload = () => {
       setTimeout(() => {
