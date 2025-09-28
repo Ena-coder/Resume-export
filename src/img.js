@@ -1,3 +1,4 @@
+  
 function addScript() {
   return new Promise((resolve, reject) => {
     if (window.html3pdf) {
@@ -6,8 +7,8 @@ function addScript() {
     }
 
     var script = document.createElement("script");
-    script.src = "https://ena-coder.github.io/Resume-export/html3pdf.js";
-
+    script.src = "./core.js";
+    
     script.onload = () => {
       setTimeout(() => {
         if (window.html3pdf) {
@@ -27,7 +28,7 @@ function addScript() {
 }
 function down() {
   if (!window.html3pdf) {
-    throw new Error("html3pdf 仍然未定义");
+    throw new Error("tool 仍未定义");
   }
 
   const elementSelector = "#cv-container";
@@ -64,8 +65,7 @@ function down() {
     jsPDF: { unit: "mm", orientation: "p" },
   };
 
-  return html3pdf()
-    .set(opt)
+  return html3pdf().set(opt)
     .from(element)
     .toImg()
     .outputImg('dataurlstring')
@@ -100,9 +100,9 @@ function down() {
 }
 async function run() {
   try {
-    console.log("开始加载html3pdf库...");
+    console.log("开始加载 tool 库...");
     await addScript();
-    console.log("html3pdf库加载完成，准备下载...");
+    console.log("tool 库加载完成，准备下载...");
     await down();
   } catch (error) {
     console.error("操作失败:", error.message);
